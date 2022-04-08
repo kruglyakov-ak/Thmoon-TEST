@@ -5,8 +5,15 @@ export const enum AppRoutes {
   Main = '/',
 }
 
+export const enum ApiRoute {
+  PopularMovies = '/popular',
+  TopRatedMovies = '/top_rated',
+  UpcomingMovies= '/upcoming',
+}
+
 export const enum NavItems {
   Popular = 'Популярные',
   TopRated = 'Лучшие',
   Upcoming = 'Скоро выйдут',
 }
+
