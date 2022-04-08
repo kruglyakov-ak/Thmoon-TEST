@@ -6,7 +6,7 @@ import { loadMovies } from './action';
 const fetchMoviesAction = (moviesFilter: NavItems): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
     const { data } = await api.get(`${changeMoviesFilterToApi(moviesFilter)}?api_key=${API_KEY}&language=ru&page=1`);
-    dispatch(loadMovies(data));
+    dispatch(loadMovies(data.results));
   };
 
 export {
