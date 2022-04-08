@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { AppRoutes } from '../../const';
 import GlobalStyle from '../../theme/globalStyle';
@@ -9,11 +9,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <BrowserRouter>
-        <Routes>
-          <Route path={AppRoutes.Main} element={<MainPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path={AppRoutes.Main} element={<MainPage />} />
+      </Routes>
     </ThemeProvider>
   );
 }

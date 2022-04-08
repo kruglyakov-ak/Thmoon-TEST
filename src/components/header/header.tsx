@@ -1,13 +1,16 @@
 import * as S from './header.styled';
 import { Link } from 'react-router-dom';
 import { AppRoutes, NavItems } from '../../const';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMoviesFilter } from '../../store/action';
+import { getMoviesFilter } from '../../store/movies-data/selectors';
 
 function Header() {
-  const [activeNavItem, setActiveNavItem] = useState(NavItems.Popular);
+  const dispatch = useDispatch();
+  const activeNavItem = useSelector(getMoviesFilter);
 
   const handleNavItemClick = ({ currentTarget }: React.MouseEvent<HTMLLIElement>) => {
-    setActiveNavItem(currentTarget.textContent as NavItems);
+    dispatch(setMoviesFilter(currentTarget.textContent as NavItems));
   };
 
   return (
