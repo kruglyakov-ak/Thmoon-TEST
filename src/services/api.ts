@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 
-const BACKEND_URL = 'https://accelerator-guitar-shop-api-v1.glitch.me';
+const BACKEND_URL = 'https://api.themoviedb.org/3/movie/';
 const REQUEST_TIMEOUT = 5000;
 
 const createAPI = (): AxiosInstance => {
