@@ -69,6 +69,8 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
 
   #root {
     overflow-x:hidden;
+    min-height: 100vh;
+    background-color: ${({ theme }) => theme.color.lightGrey};
   }
 
   .visually-hidden {

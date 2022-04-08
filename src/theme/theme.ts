@@ -10,8 +10,9 @@ const theme = {
   color: {
     black: '#000000',
     white: '#ffffff',
-    grey: '#333333',
-    lightGrey: 'rgba(215, 215, 215, 1)',
+    grey: '#222222',
+    lightGrey: '#f4f4f4',
+    darkGrey: '#8E8E8E',
     backgroundGrey: '#F2F2F2',
     blue: '#302E82',
     darkBlue: '#2D2D44',
