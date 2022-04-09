@@ -8,7 +8,7 @@ function MoviesList() {
 
   return (
     <S.MoviesList>
-      {movies.map((movie) => <MovieItem movie={movie} key={movie.id} />)}
+      {movies.map((movie, i) => <MovieItem movie={movie} key={movie.id} index={i+1}/>)}
     </S.MoviesList>
   );
 }

@@ -4,31 +4,43 @@ const MovieItem = styled.li`
   padding: 25px 20px;
   list-style-position: inside;
   display: flex;
+  flex-wrap: wrap;
+  border-top: 2px solid ${({ theme }) => theme.color.lightGrey};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.lightGrey};
+  }
 `;
 
 const PosterConteiner = styled.div`
   position: relative;
+  width: 64px;
+  height: 96px;
+  padding-left: 20px;
 `;
 
 const Poster = styled.img`
-  width: 150px;
+  border-radius: 5px;
+  font-size: 11px;
 `;
 
 const MovieVote = styled.div`
-  width: 50px;
-  height: 25px;
+  width: 31px;
+  height: 19px;
   background: ${({ theme }) => theme.color.green};
   color: ${({ theme }) => theme.color.white};
   text-align: center;
-  padding-top: 4px;
-  border-radius: 5px;
+  font-size: 11px;
+  line-height: 13px;
+  border-radius: 2px;
   position: absolute;
-  top: 15px;
-  left: -15px;
+  top: 5px;
+  left: 15px;
+  padding-top: 5px;
 `;
 
 const ContentCenter = styled.div`
-  padding-left: 20px;
+  padding-left: 40px;
 `;
 
 const Title = styled.h3``;
@@ -44,6 +56,12 @@ const MovieReleased = styled.span`
   display: block;
 `;
 
+const MoviePosition = styled.div`
+  width: 24px;
+  height: 100%;
+  font-weight: bold;
+`;
+
 export {
   MovieItem,
   Title,
@@ -54,4 +72,5 @@ export {
   OrignalLanguage,
   MovieVote,
   PosterConteiner,
+  MoviePosition,
 };

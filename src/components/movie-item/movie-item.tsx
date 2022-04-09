@@ -4,18 +4,20 @@ import * as S from './movie-item.styled';
 
 type MoviesItemProps = {
   movie: Movie;
+  index: number;
 }
 
-function MoviesItem({ movie }: MoviesItemProps) {
+function MoviesItem({ movie, index }: MoviesItemProps) {
   const releaseYear = Date.parse(movie.release_date);
 
   return (
     <S.MovieItem>
+      <S.MoviePosition>{index}</S.MoviePosition>
       <S.PosterConteiner>
         <S.Poster
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-          width={150}
-          height={255}
+          width={64}
+          height={96}
           alt={movie.title}
         />
         <S.MovieVote>{movie.vote_average}</S.MovieVote>
