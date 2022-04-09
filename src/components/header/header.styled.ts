@@ -5,6 +5,7 @@ const Header = styled.header`
   background-color: ${({ theme }) => theme.color.grey};
   position: fixed;
   color: ${({ theme }) => theme.color.darkGrey};
+  z-index: 2;
 `;
 
 const Content = styled.div`

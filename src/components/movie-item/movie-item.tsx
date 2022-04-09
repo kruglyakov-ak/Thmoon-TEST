@@ -11,7 +11,15 @@ function MoviesItem({ movie }: MoviesItemProps) {
 
   return (
     <S.MovieItem>
-      <S.Poster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} width={150} height={255} alt={movie.title} />
+      <S.PosterConteiner>
+        <S.Poster
+          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          width={150}
+          height={255}
+          alt={movie.title}
+        />
+        <S.MovieVote>{movie.vote_average}</S.MovieVote>
+      </S.PosterConteiner>
       <S.ContentCenter>
         <S.Title>{movie.title}</S.Title>
         <S.OriginalTitle>{movie.original_title}</S.OriginalTitle>
