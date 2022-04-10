@@ -57,7 +57,7 @@ const MovieReleased = styled.span`
 `;
 
 const MoviePosition = styled.div`
-  width: 24px;
+  width: 70px;
   height: 100%;
   font-weight: bold;
 `;

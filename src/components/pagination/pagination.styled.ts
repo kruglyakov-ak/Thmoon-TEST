@@ -8,13 +8,13 @@ const Pagination = styled.div`
   align-items: center;
 `;
 
-const PaginationItem = styled.span`
-  display: inline-block;
-  padding-top: 8px;
+const PaginationInput = styled.input`
   font-weight: bold;
-  width: 36px;
+  width: 72px;
   height: 36px;
   text-align: center;
+
+  border: none;
 `;
 
 const Button = styled.button`
@@ -37,4 +37,4 @@ const Button = styled.button`
   }
 `;
 
-export { Pagination, PaginationItem, Button };
+export { Pagination, PaginationInput, Button };
