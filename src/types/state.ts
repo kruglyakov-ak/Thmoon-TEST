@@ -9,4 +9,9 @@ type MoviesData = {
   moviesFilter: NavItems;
 };
 
-export type { State, MoviesData };
+type Pagination = {
+  pageCount: number,
+  currentPage: number;
+};
+
+export type { State, MoviesData, Pagination };

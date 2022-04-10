@@ -20,5 +20,21 @@ const setMoviesFilter = createAction(
     },
   })
 );
+const loadPageCount = createAction(
+  ActionType.LoadPageCount,
+  (pageCount: number) => ({
+    payload: {
+      pageCount,
+    },
+  })
+);
+const setCurrentPage = createAction(
+  ActionType.SetCurrentPage,
+  (currentPage: number) => ({
+    payload: {
+      currentPage,
+    },
+  })
+);
 
-export { setMoviesFilter, loadMovies };
+export { setMoviesFilter, loadMovies, loadPageCount, setCurrentPage };
