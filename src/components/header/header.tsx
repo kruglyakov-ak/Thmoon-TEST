@@ -2,7 +2,7 @@ import * as S from './header.styled';
 import { Link } from 'react-router-dom';
 import { AppRoutes, NavItems } from '../../const';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMoviesFilter } from '../../store/action';
+import { setCurrentPage, setMoviesFilter } from '../../store/action';
 import { getMoviesFilter } from '../../store/movies-data/selectors';
 
 function Header() {
@@ -11,6 +11,7 @@ function Header() {
 
   const handleNavItemClick = ({ currentTarget }: React.MouseEvent<HTMLLIElement>) => {
     dispatch(setMoviesFilter(currentTarget.textContent as NavItems));
+    dispatch(setCurrentPage(1));
   };
 
   return (

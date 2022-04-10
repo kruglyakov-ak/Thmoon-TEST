@@ -3,21 +3,38 @@ import styled from 'styled-components';
 const Pagination = styled.div`
   padding-top: 7px;
   padding-bottom: 5px;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const PaginationItem = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  padding-top: 8px;
+  font-weight: bold;
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.color.grey};
-  color: ${({ theme }) => theme.color.lightGrey};
+  text-align: center;
 `;
 
-export { Pagination, PaginationItem };
+const Button = styled.button`
+  border: 1px solid ${({ theme }) => theme.color.grey};
+  background: none;
+  border-radius: 5px;
+  width: 72px;
+  height: 36px;
+  cursor: pointer;
+
+  &:hover:not(:disabled),
+  &:focus {
+    background: ${({ theme }) => theme.color.grey};
+    color: ${({ theme }) => theme.color.white};
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
+`;
+
+export { Pagination, PaginationItem, Button };
