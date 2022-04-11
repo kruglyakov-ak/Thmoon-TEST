@@ -6,8 +6,9 @@ import { State } from './state';
 enum ActionType {
   LoadMovies = 'data/loadMovies',
   SetMoviesFilter = 'data/setMoviesFilter',
+  LoadGenres = 'data/loadGenres',
   LoadPageCount = 'pagination/loadPageCount',
-  SetCurrentPage = 'pagination/setCurrentPage'
+  SetCurrentPage = 'pagination/setCurrentPage',
 }
 
 type ThunkActionResult<R = Promise<void>> = ThunkAction<R, State, AxiosInstance, Action>;

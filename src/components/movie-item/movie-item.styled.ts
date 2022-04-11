@@ -62,6 +62,10 @@ const MoviePosition = styled.div`
   font-weight: bold;
 `;
 
+const GenreItem = styled.span`
+  display: inline-block;
+`;
+
 export {
   MovieItem,
   Title,
@@ -73,4 +77,5 @@ export {
   MovieVote,
   PosterConteiner,
   MoviePosition,
+  GenreItem,
 };

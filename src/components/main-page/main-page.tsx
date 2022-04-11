@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMoviesAction } from '../../store/api-actions';
+import { fetchGenresAction, fetchMoviesAction } from '../../store/api-actions';
 import { getMoviesFilter } from '../../store/movies-data/selectors';
 import { getCurrentPage } from '../../store/pagination/selectors';
 import Header from '../header/header';
 import MoviesList from '../movies-list/movies-list';
 import Pagination from '../pagination/pagination';
+import Slider from '../slider/slider';
 import * as S from './main-page.styled';
 
 function MainPage() {
@@ -15,6 +16,7 @@ function MainPage() {
 
   useEffect(() => {
     dispatch(fetchMoviesAction(activeNavItem, currentPage));
+    dispatch(fetchGenresAction());
   }, [activeNavItem, currentPage, dispatch]);
 
   return (
@@ -24,6 +26,7 @@ function MainPage() {
         <h1>{activeNavItem}</h1>
         <MoviesList />
         <Pagination />
+        <Slider />
       </S.Main>
     </>
   );

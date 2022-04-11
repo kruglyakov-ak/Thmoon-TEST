@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 import { NavItems } from '../const';
 import { ActionType } from '../types/action';
+import { Genre } from '../types/genre';
 import { Movie } from '../types/movie';
 
 const loadMovies = createAction(
@@ -36,5 +37,13 @@ const setCurrentPage = createAction(
     },
   })
 );
+const loadGenres = createAction(
+  ActionType.LoadGenres,
+  (genres: Genre[]) => ({
+    payload: {
+      genres,
+    },
+  })
+);
 
-export { setMoviesFilter, loadMovies, loadPageCount, setCurrentPage };
+export { setMoviesFilter, loadMovies, loadPageCount, setCurrentPage, loadGenres };
