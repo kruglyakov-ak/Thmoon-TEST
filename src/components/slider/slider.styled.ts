@@ -26,6 +26,11 @@ const Button = styled.button`
   top: 125px;
   cursor: pointer;
   border-radius: 50%;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
 const ButtonPrev = styled(Button)`
