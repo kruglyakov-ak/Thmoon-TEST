@@ -13,7 +13,7 @@ function Slider() {
   const handlePrevButtonClick = () => {
     if (slider.current !== null) {
       slider.current.scrollTo({
-        left: slider.current.scrollLeft - 155,
+        left: slider.current.scrollLeft - 155*7,
         behavior: 'smooth',
       });
     }
@@ -22,7 +22,7 @@ function Slider() {
   const handleNextButtonClick = () => {
     if (slider.current !== null) {
       slider.current.scrollTo({
-        left: slider.current.scrollLeft + 155,
+        left: slider.current.scrollLeft + 155*7,
         behavior: 'smooth',
       });
     }
