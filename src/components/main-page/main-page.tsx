@@ -23,10 +23,9 @@ function MainPage() {
     <>
       <Header />
       <S.Main>
-        <h1>{activeNavItem}</h1>
+        <Slider />
         <MoviesList />
         <Pagination />
-        <Slider />
       </S.Main>
     </>
   );

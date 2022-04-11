@@ -28,7 +28,7 @@ function MoviesItem({ movie, index, genres }: MoviesItemProps) {
         <S.Title>{movie.title}</S.Title>
         <S.OriginalTitle>{movie.original_title}</S.OriginalTitle>
         <S.OrignalLanguage><img src={`/icons/flags/${movie.original_language}.png`} alt="" width={16} height={11} /></S.OrignalLanguage>
-        <S.MovieReleased>Год релиза: {dayjs(releaseDate).year()}</S.MovieReleased>
+        <S.MovieReleased>Год релиза: {!isNaN(releaseDate) ? dayjs(releaseDate).year() : '-'}</S.MovieReleased>
         {movie.genre_ids.map((item, i, arr) => {
           if (i + 1 === arr.length) {
             return <S.GenreItem key={item}>{genres.find((item2) => item2.id === item)?.name}</S.GenreItem>;
