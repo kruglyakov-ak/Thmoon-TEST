@@ -4,11 +4,16 @@ import { ActionType } from '../types/action';
 import { Genre } from '../types/genre';
 import { Movie } from '../types/movie';
 
-const loadMovies = createAction(
-  ActionType.LoadMovies,
-  (movies: Movie[]) => ({
+const loadMovies = createAction(ActionType.LoadMovies, (movies: Movie[]) => ({
+  payload: {
+    movies,
+  },
+}));
+const loadNowPlayingMovies = createAction(
+  ActionType.LoadNowPlayingMovies,
+  (nowPlayingMovies: Movie[]) => ({
     payload: {
-      movies,
+      nowPlayingMovies,
     },
   })
 );
@@ -37,13 +42,17 @@ const setCurrentPage = createAction(
     },
   })
 );
-const loadGenres = createAction(
-  ActionType.LoadGenres,
-  (genres: Genre[]) => ({
-    payload: {
-      genres,
-    },
-  })
-);
+const loadGenres = createAction(ActionType.LoadGenres, (genres: Genre[]) => ({
+  payload: {
+    genres,
+  },
+}));
 
-export { setMoviesFilter, loadMovies, loadPageCount, setCurrentPage, loadGenres };
+export {
+  setMoviesFilter,
+  loadMovies,
+  loadPageCount,
+  setCurrentPage,
+  loadGenres,
+  loadNowPlayingMovies,
+};

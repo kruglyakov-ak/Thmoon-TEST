@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGenresAction, fetchMoviesAction } from '../../store/api-actions';
+import { fetchGenresAction, fetchMoviesAction, fetchNowPlayingMoviesAction } from '../../store/api-actions';
 import { getMoviesFilter } from '../../store/movies-data/selectors';
 import { getCurrentPage } from '../../store/pagination/selectors';
 import Header from '../header/header';
@@ -17,6 +17,7 @@ function MainPage() {
   useEffect(() => {
     dispatch(fetchMoviesAction(activeNavItem, currentPage));
     dispatch(fetchGenresAction());
+    dispatch(fetchNowPlayingMoviesAction());
   }, [activeNavItem, currentPage, dispatch]);
 
   return (

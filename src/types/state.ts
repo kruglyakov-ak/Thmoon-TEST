@@ -7,6 +7,7 @@ type State = RootState;
 
 type MoviesData = {
   movies: Movie[],
+  nowPlayingMovies: Movie[],
   genres: Genre[],
   moviesFilter: NavItems;
 };

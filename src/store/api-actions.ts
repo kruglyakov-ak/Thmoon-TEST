@@ -1,7 +1,7 @@
 import { API_KEY, NavItems } from '../const';
 import { ThunkActionResult } from '../types/action';
 import { changeMoviesFilterToApi } from '../utils/common';
-import { loadMovies, loadPageCount, loadGenres } from './action';
+import { loadMovies, loadPageCount, loadGenres, loadNowPlayingMovies } from './action';
 
 const fetchMoviesAction = (moviesFilter: NavItems, currentPage: number): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
@@ -16,7 +16,14 @@ const fetchGenresAction = (): ThunkActionResult =>
     dispatch(loadGenres(data.genres));
   };
 
+const fetchNowPlayingMoviesAction = (): ThunkActionResult =>
+  async (dispatch, _getState, api): Promise<void> => {
+    const { data } = await api.get(`/movie/now_playing?api_key=${API_KEY}&language=ru&page=1`);
+    dispatch(loadNowPlayingMovies(data.results));
+  };
+
 export {
   fetchMoviesAction,
-  fetchGenresAction
+  fetchGenresAction,
+  fetchNowPlayingMoviesAction
 };

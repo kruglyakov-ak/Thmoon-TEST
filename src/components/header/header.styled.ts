@@ -10,7 +10,7 @@ const Header = styled.header`
 
 const Content = styled.div`
   max-width: 1300px;
-  min-height: 70px;
+  min-height: 50px;
   padding: 0 30px;
   margin: 0 auto;
   display: flex;
