@@ -12,7 +12,6 @@ const PosterConteiner = styled.div`
   position: relative;
   width: 140px;
   height: 210px;
-  border: 1px solid black;
 `;
 
 const Poster = styled.img`
