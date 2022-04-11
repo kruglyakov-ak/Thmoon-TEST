@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const MovieItem = styled.li`
-  padding: 25px 20px;
+  padding: 5px 20px;
   list-style-position: inside;
   display: flex;
   flex-wrap: wrap;
