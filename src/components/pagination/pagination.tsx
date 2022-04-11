@@ -1,10 +1,15 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, RefObject, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from '../../store/action';
 import { getCurrentPage, getPageCount } from '../../store/pagination/selectors';
 import * as S from './pagination.styled';
 
-function Pagination() {
+type PaginationProps = {
+  movieList: RefObject<HTMLUListElement>;
+}
+
+
+function Pagination({ movieList }: PaginationProps) {
   const dispatch = useDispatch();
   const pageCount = useSelector(getPageCount);
   const currentPage = useSelector(getCurrentPage);
@@ -15,12 +20,22 @@ function Pagination() {
       dispatch(setCurrentPage(currentPage - 1));
       setPaginationInputValue(currentPage - 1);
     }
+    if (movieList !== null) {
+      movieList.current?.scrollTo({
+        top: 0
+      });
+    }
   };
 
   const handleNextButtonClick = () => {
     if (currentPage !== pageCount) {
       dispatch(setCurrentPage(currentPage + 1));
       setPaginationInputValue(currentPage + 1);
+    }
+    if (movieList !== null) {
+      movieList.current?.scrollTo({
+        top: 0
+      });
     }
   };
 
@@ -41,7 +56,11 @@ function Pagination() {
     if (+target.value > pageCount) {
       dispatch(setCurrentPage(pageCount));
       setPaginationInputValue(pageCount);
-
+    }
+    if (movieList !== null) {
+      movieList.current?.scrollTo({
+        top: 0
+      });
     }
   };
 

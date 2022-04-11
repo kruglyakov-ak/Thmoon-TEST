@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGenresAction, fetchMoviesAction, fetchNowPlayingMoviesAction } from '../../store/api-actions';
 import { getMoviesFilter } from '../../store/movies-data/selectors';
@@ -13,6 +13,7 @@ function MainPage() {
   const dispatch = useDispatch();
   const activeNavItem = useSelector(getMoviesFilter);
   const currentPage = useSelector(getCurrentPage);
+  const movieList = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     dispatch(fetchMoviesAction(activeNavItem, currentPage));
@@ -25,8 +26,8 @@ function MainPage() {
       <Header />
       <S.Main>
         <Slider />
-        <MoviesList />
-        <Pagination />
+        <MoviesList movieList={movieList}/>
+        <Pagination movieList={movieList}/>
       </S.Main>
     </>
   );
