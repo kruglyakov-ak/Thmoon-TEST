@@ -30,8 +30,6 @@ function Slider() {
 
   const handleSliderScroll = () => {
     if (slider.current !== null) {
-      // eslint-disable-next-line no-console
-      console.log(slider.current.scrollLeft);
       if (slider.current.scrollLeft === 0) {
         setIPrevButtonDisabled(true);
       } else {

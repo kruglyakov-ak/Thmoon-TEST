@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import { Link } from 'react-router-dom';
+import { AppRoutes } from '../../const';
 import { Genre } from '../../types/genre';
 import { Movie } from '../../types/movie';
 import * as S from './movie-item.styled';
@@ -15,15 +17,17 @@ function MoviesItem({ movie, index, genres }: MoviesItemProps) {
   return (
     <S.MovieItem>
       <S.MoviePosition>{index}</S.MoviePosition>
-      <S.PosterConteiner>
-        <S.Poster
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-          width={64}
-          height={96}
-          alt={movie.title}
-        />
-        <S.MovieVote>{movie.vote_average}</S.MovieVote>
-      </S.PosterConteiner>
+      <Link to={`${AppRoutes.Movie}${movie.id}`}>
+        <S.PosterConteiner>
+          <S.Poster
+            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+            width={64}
+            height={96}
+            alt={movie.title}
+          />
+          <S.MovieVote>{movie.vote_average}</S.MovieVote>
+        </S.PosterConteiner>
+      </Link>
       <S.ContentCenter>
         <S.Title>{movie.title}</S.Title>
         <S.OriginalTitle>{movie.original_title}</S.OriginalTitle>

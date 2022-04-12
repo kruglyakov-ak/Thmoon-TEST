@@ -16,7 +16,7 @@ function SliderItem({ movie }: SliderProps) {
     <S.SliderItem>
       <S.PosterConteiner>
         <S.Poster
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
           width={140}
           height={210}
           alt={movie.title}
