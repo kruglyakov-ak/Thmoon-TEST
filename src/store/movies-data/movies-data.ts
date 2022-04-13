@@ -1,13 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { NavItems } from '../../const';
 import { MoviesData } from '../../types/state';
-import { loadGenres, loadMovies, setMoviesFilter, loadNowPlayingMovies } from '../action';
+import { loadGenres, loadMovies, setMoviesFilter, loadNowPlayingMovies, loadMovieDetails } from '../action';
 
 const initialState: MoviesData = {
   movies: [],
   nowPlayingMovies: [],
   genres: [],
   moviesFilter: NavItems.Popular,
+  movieDetails: null,
 };
 
 const moviesData = createReducer(initialState, (builder) => {
@@ -23,6 +24,10 @@ const moviesData = createReducer(initialState, (builder) => {
     .addCase(loadGenres, (state, action) => {
       const { genres } = action.payload;
       state.genres = genres;
+    })
+    .addCase(loadMovieDetails, (state, action) => {
+      const { movieDetails } = action.payload;
+      state.movieDetails = movieDetails;
     })
     .addCase(setMoviesFilter, (state, action) => {
       const { moviesFilter } = action.payload;

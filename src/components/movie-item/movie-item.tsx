@@ -29,7 +29,9 @@ function MoviesItem({ movie, index, genres }: MoviesItemProps) {
         </S.PosterConteiner>
       </Link>
       <S.ContentCenter>
-        <S.Title>{movie.title}</S.Title>
+        <Link to={`${AppRoutes.Movie}${movie.id}`}>
+          <S.Title>{movie.title}</S.Title>
+        </Link>
         <S.OriginalTitle>{movie.original_title}</S.OriginalTitle>
         <S.OrignalLanguage><img src={`/icons/flags/${movie.original_language}.png`} alt="" width={16} height={11} /></S.OrignalLanguage>
         <S.MovieReleased>Год релиза: {!isNaN(releaseDate) ? dayjs(releaseDate).year() : '-'}</S.MovieReleased>

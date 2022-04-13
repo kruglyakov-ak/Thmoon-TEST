@@ -1,5 +1,7 @@
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { AppRoutes } from '../../const';
 import { getGenres } from '../../store/movies-data/selectors';
 import { Movie } from '../../types/movie';
 import * as S from './slider-item.styled';
@@ -14,15 +16,17 @@ function SliderItem({ movie }: SliderProps) {
 
   return (
     <S.SliderItem>
-      <S.PosterConteiner>
-        <S.Poster
-          src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-          width={140}
-          height={210}
-          alt={movie.title}
-        />
-        <S.MovieVote>{movie.vote_average}</S.MovieVote>
-      </S.PosterConteiner>
+      <Link to={`${AppRoutes.Movie}${movie.id}`}>
+        <S.PosterConteiner>
+          <S.Poster
+            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+            width={140}
+            height={210}
+            alt={movie.title}
+          />
+          <S.MovieVote>{movie.vote_average}</S.MovieVote>
+        </S.PosterConteiner>
+      </Link>
       <S.Title>{movie.title}</S.Title>
       <S.MovieReleased>{!isNaN(releaseDate) ? dayjs(releaseDate).year() : '-'} </S.MovieReleased>
       <S.GenreItem>{genres.find((item) => item.id === movie.genre_ids[0])?.name}</S.GenreItem>

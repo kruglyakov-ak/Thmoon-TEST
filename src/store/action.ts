@@ -3,12 +3,14 @@ import { NavItems } from '../const';
 import { ActionType } from '../types/action';
 import { Genre } from '../types/genre';
 import { Movie } from '../types/movie';
+import { MovieDetails } from '../types/movie-details';
 
 const loadMovies = createAction(ActionType.LoadMovies, (movies: Movie[]) => ({
   payload: {
     movies,
   },
 }));
+
 const loadNowPlayingMovies = createAction(
   ActionType.LoadNowPlayingMovies,
   (nowPlayingMovies: Movie[]) => ({
@@ -26,6 +28,7 @@ const setMoviesFilter = createAction(
     },
   })
 );
+
 const loadPageCount = createAction(
   ActionType.LoadPageCount,
   (pageCount: number) => ({
@@ -34,6 +37,7 @@ const loadPageCount = createAction(
     },
   })
 );
+
 const setCurrentPage = createAction(
   ActionType.SetCurrentPage,
   (currentPage: number) => ({
@@ -42,11 +46,21 @@ const setCurrentPage = createAction(
     },
   })
 );
+
 const loadGenres = createAction(ActionType.LoadGenres, (genres: Genre[]) => ({
   payload: {
     genres,
   },
 }));
+
+const loadMovieDetails = createAction(
+  ActionType.LoadMovieDetails,
+  (movieDetails: MovieDetails | null) => ({
+    payload: {
+      movieDetails,
+    },
+  })
+);
 
 export {
   setMoviesFilter,
@@ -55,4 +69,5 @@ export {
   setCurrentPage,
   loadGenres,
   loadNowPlayingMovies,
+  loadMovieDetails,
 };

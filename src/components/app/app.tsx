@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { AppRoutes } from '../../const';
 import GlobalStyle from '../../theme/globalStyle';
 import theme from '../../theme/theme';
+import DetailsPage from '../details-page/details-page';
 import MainPage from '../main-page/main-page';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path={AppRoutes.Main} element={<MainPage />} />
+        <Route path={AppRoutes.Details} element={<DetailsPage />} />
       </Routes>
     </ThemeProvider>
   );

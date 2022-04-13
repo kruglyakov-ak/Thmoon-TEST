@@ -8,6 +8,7 @@ enum ActionType {
   SetMoviesFilter = 'data/setMoviesFilter',
   LoadGenres = 'data/loadGenres',
   LoadNowPlayingMovies = 'data/loadNowPlayingMovies',
+  LoadMovieDetails = 'data/loadMovieDetails',
   LoadPageCount = 'pagination/loadPageCount',
   SetCurrentPage = 'pagination/setCurrentPage',
 }
