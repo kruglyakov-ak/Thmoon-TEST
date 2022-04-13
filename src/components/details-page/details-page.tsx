@@ -86,6 +86,9 @@ function DetailsPage() {
                 <S.TH>Время</S.TH>
                 <td>{`${details.runtime} мин.`}</td>
               </tr>
+              <tr>
+                <S.VoteAverage>{details.vote_average}</S.VoteAverage>
+              </tr>
             </S.Table>
             <p>{details.overview}</p>
           </S.Content>

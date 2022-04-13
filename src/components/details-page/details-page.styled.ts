@@ -36,4 +36,18 @@ const TH = styled.td`
   color: ${({ theme }) => theme.color.darkGrey};
 `;
 
-export { DetailsPage, Poster, Content, SubTitle, Table, TH };
+const VoteAverage = styled.div`
+  height: 60px;
+  width: 60px;
+  background-color: ${({ theme }) => theme.color.green};
+  color: ${({ theme }) => theme.color.white};
+  font-size: ${({ theme }) => theme.font.large};
+  line-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 20px;
+`;
+
+export { DetailsPage, Poster, Content, SubTitle, Table, TH, VoteAverage };
