@@ -7,6 +7,7 @@ import { getSearchResalt, getMoviesFilter } from '../../store/movies-data/select
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import ModalSearchResult from '../modal-search-result/modal-search-result';
 import { fetchSearchMovieAction } from '../../store/api-actions';
+import useDebounce from '../../hooks/useDebounce';
 
 function Header() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function Header() {
   const [searchInputValue, setSearchInputValue] = useState('');
   const activeNavItem = useSelector(getMoviesFilter);
   const searchResalt = useSelector(getSearchResalt);
+  const debounceSearchInputValue = useDebounce(searchInputValue, 500);
 
   const handleEscapeKeyDown = useCallback((evt: { key: string; }) => {
     if (evt.key === 'Escape') {
@@ -49,8 +51,8 @@ function Header() {
     if (searchInputValue === '') {
       dispatch(loadSearchResult([]));
     }
-    dispatch(fetchSearchMovieAction(searchInputValue));
-  }, [dispatch, searchInputValue]);
+    dispatch(fetchSearchMovieAction(debounceSearchInputValue));
+  }, [dispatch, debounceSearchInputValue, searchInputValue]);
 
   return (
     <S.Header>
