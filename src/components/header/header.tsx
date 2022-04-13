@@ -4,12 +4,13 @@ import { AppRoutes, NavItems } from '../../const';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage, setMoviesFilter } from '../../store/action';
 import { getMovies, getMoviesFilter } from '../../store/movies-data/selectors';
-import { useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import ModalSearchResult from '../modal-search-result/modal-search-result';
 
 function Header() {
   const dispatch = useDispatch();
   const [isModalShow, setIsModalShow] = useState(false);
+  const [searchInputValue, setSearchInputValue] = useState('');
   const activeNavItem = useSelector(getMoviesFilter);
   const movies = useSelector(getMovies);
 
@@ -31,6 +32,10 @@ function Header() {
 
   const handleModalClose = () => {
     setIsModalShow(false);
+  };
+
+  const handleSearchInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setSearchInputValue(target.value);
   };
 
   useEffect(() => {
@@ -65,7 +70,13 @@ function Header() {
           </S.NavigationList>
         </S.Navigation>
         <S.SearchConteiner>
-          <S.SearchInput type="text" placeholder='Поиск' onFocus={handleSearchInputFocus} />
+          <S.SearchInput
+            type="text"
+            placeholder='Поиск'
+            onClick={handleSearchInputFocus}
+            value={searchInputValue}
+            onChange={handleSearchInputChange}
+          />
 
           <ModalSearchResult movies={movies} isModalShow={isModalShow} />
         </S.SearchConteiner>

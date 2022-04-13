@@ -116,10 +116,10 @@ const ModalSearchResultItemVote = styled.span`
 const ModalOverlay = styled.div<ModalSearchResultProps>`
   ${({ isModalShow }) => (isModalShow ? '' : 'display: none;')}
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 0;
-  width: 300vw;
-  height: 300vh;
+  width: 100vw;
+  height: 100vh;
   background-color: transparent;
 `;
 
