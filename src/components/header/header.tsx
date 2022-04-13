@@ -53,19 +53,13 @@ function Header() {
         <S.Navigation>
           <S.NavigationList>
             <S.NavigationItem active={activeNavItem === NavItems.Popular} onClick={handleNavItemClick}>
-              <Link to={AppRoutes.Main}>
-                {NavItems.Popular}
-              </Link>
+              {NavItems.Popular}
             </S.NavigationItem>
             <S.NavigationItem active={activeNavItem === NavItems.TopRated} onClick={handleNavItemClick}>
-              <Link to={AppRoutes.Main}>
-                {NavItems.TopRated}
-              </Link>
+              {NavItems.TopRated}
             </S.NavigationItem>
             <S.NavigationItem active={activeNavItem === NavItems.Upcoming} onClick={handleNavItemClick}>
-              <Link to={AppRoutes.Main}>
-                {NavItems.Upcoming}
-              </Link>
+              {NavItems.Upcoming}
             </S.NavigationItem>
           </S.NavigationList>
         </S.Navigation>

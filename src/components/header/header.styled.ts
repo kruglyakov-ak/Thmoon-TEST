@@ -48,7 +48,7 @@ const activeLi = css`
 const NavigationItem = styled.li<NavigationItemProps>`
   text-transform: uppercase;
   padding-left: 100px;
-
+  cursor: pointer;
   ${({ active }) => (active ? activeLi : '')};
 
   & a:hover,
@@ -138,5 +138,5 @@ export {
   ModalSearchResultItemDesc,
   ModalSearchResultItemTitle,
   ModalSearchResultItemVote,
-  ModalOverlay
+  ModalOverlay,
 };
