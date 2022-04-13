@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { AppRoutes, Countries } from '../../const';
 import { fetchMovieDetailsAction } from '../../store/api-actions';
 import { getIsMovieDetailsLoaded, getMovieDetails } from '../../store/movies-data/selectors';
+import EmptyPage from '../empty-page/empty-page';
 import Header from '../header/header';
 import LoadingScreen from '../loading-screen/loading-screen';
 import * as S from './details-page.styled';
@@ -30,9 +31,11 @@ function DetailsPage() {
     );
   }
 
+  if (details === null) {
+    <EmptyPage />;
+  }
+
   return (
-
-
     <>
       <Header />
       {details !== null &&

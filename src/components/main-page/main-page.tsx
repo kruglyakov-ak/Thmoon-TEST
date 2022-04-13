@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGenresAction, fetchMoviesAction, fetchNowPlayingMoviesAction } from '../../store/api-actions';
-import { getIsMoviesLoaded, getIsNowPlayingMoviesLoaded, getMoviesFilter } from '../../store/movies-data/selectors';
+import { getIsMoviesLoaded, getIsNowPlayingMoviesLoaded, getMovies, getMoviesFilter } from '../../store/movies-data/selectors';
 import { getCurrentPage } from '../../store/pagination/selectors';
+import EmptyPage from '../empty-page/empty-page';
 import Header from '../header/header';
 import LoadingScreen from '../loading-screen/loading-screen';
 import MoviesList from '../movies-list/movies-list';
@@ -13,6 +14,7 @@ import * as S from './main-page.styled';
 function MainPage() {
   const dispatch = useDispatch();
   const activeNavItem = useSelector(getMoviesFilter);
+  const movies = useSelector(getMovies);
   const currentPage = useSelector(getCurrentPage);
   const movieList = useRef<HTMLUListElement>(null);
   const isMoviesLoaded = useSelector(getIsMoviesLoaded);
@@ -38,13 +40,17 @@ function MainPage() {
     );
   }
 
+  if (movies.length === 0) {
+    <EmptyPage />;
+  }
+
   return (
     <>
       <Header />
       <S.Main>
         <Slider />
-        <MoviesList movieList={movieList}/>
-        <Pagination movieList={movieList}/>
+        <MoviesList movieList={movieList} />
+        <Pagination movieList={movieList} />
       </S.Main>
     </>
   );

@@ -15,10 +15,14 @@ import {
 const fetchMoviesAction = (moviesFilter: NavItems, currentPage: number): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
     dispatch(setIsMoviesLoaded(false));
-    const { data } = await api.get(`movie${changeMoviesFilterToApi(moviesFilter)}?api_key=${API_KEY}&language=ru&page=${currentPage}`);
-    dispatch(loadMovies(data.results));
-    dispatch(loadPageCount(data.total_pages));
-    dispatch(setIsMoviesLoaded(true));
+    try {
+      const { data } = await api.get(`movie${changeMoviesFilterToApi(moviesFilter)}?api_key=${API_KEY}&language=ru&page=${currentPage}`);
+      dispatch(loadMovies(data.results));
+      dispatch(loadPageCount(data.total_pages));
+      dispatch(setIsMoviesLoaded(true));
+    } catch (error) {
+      dispatch(setIsMoviesLoaded(true));
+    }
   };
 
 const fetchGenresAction = (): ThunkActionResult =>
@@ -30,17 +34,25 @@ const fetchGenresAction = (): ThunkActionResult =>
 const fetchNowPlayingMoviesAction = (): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
     dispatch(setIsNowPlayingMoviesLoaded(false));
-    const { data } = await api.get(`/movie/now_playing?api_key=${API_KEY}&language=ru&page=1`);
-    dispatch(loadNowPlayingMovies(data.results));
-    dispatch(setIsNowPlayingMoviesLoaded(true));
+    try {
+      const { data } = await api.get(`/movie/now_playing?api_key=${API_KEY}&language=ru&page=1`);
+      dispatch(loadNowPlayingMovies(data.results));
+      dispatch(setIsNowPlayingMoviesLoaded(true));
+    } catch (error) {
+      dispatch(setIsNowPlayingMoviesLoaded(true));
+    }
   };
 
 const fetchMovieDetailsAction = (id: number): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
     dispatch(setIsMovieDetailsLoaded(false));
-    const { data } = await api.get(`/movie/${id}?api_key=${API_KEY}&language=ru`);
-    dispatch(loadMovieDetails(data));
-    dispatch(setIsMovieDetailsLoaded(true));
+    try {
+      const { data } = await api.get(`/movie/${id}?api_key=${API_KEY}&language=ru`);
+      dispatch(loadMovieDetails(data));
+      dispatch(setIsMovieDetailsLoaded(true));
+    } catch (error) {
+      dispatch(setIsMovieDetailsLoaded(true));
+    }
   };
 
 export {
