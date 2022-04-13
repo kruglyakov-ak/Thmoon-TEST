@@ -86,6 +86,14 @@ const setIsNowPlayingMoviesLoaded = createAction(
     },
   })
 );
+const loadSearchResult = createAction(
+  ActionType.LoadSearchResult,
+  (searchResult: Movie[]) => ({
+    payload: {
+      searchResult,
+    },
+  })
+);
 
 export {
   setMoviesFilter,
@@ -98,4 +106,5 @@ export {
   setIsMovieDetailsLoaded,
   setIsMoviesLoaded,
   setIsNowPlayingMoviesLoaded,
+  loadSearchResult
 };

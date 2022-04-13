@@ -2,17 +2,18 @@ import * as S from './header.styled';
 import { Link } from 'react-router-dom';
 import { AppRoutes, NavItems } from '../../const';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPage, setMoviesFilter } from '../../store/action';
-import { getMovies, getMoviesFilter } from '../../store/movies-data/selectors';
+import { loadSearchResult, setCurrentPage, setMoviesFilter } from '../../store/action';
+import { getSearchResalt, getMoviesFilter } from '../../store/movies-data/selectors';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import ModalSearchResult from '../modal-search-result/modal-search-result';
+import { fetchSearchMovieAction } from '../../store/api-actions';
 
 function Header() {
   const dispatch = useDispatch();
   const [isModalShow, setIsModalShow] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
   const activeNavItem = useSelector(getMoviesFilter);
-  const movies = useSelector(getMovies);
+  const searchResalt = useSelector(getSearchResalt);
 
   const handleEscapeKeyDown = useCallback((evt: { key: string; }) => {
     if (evt.key === 'Escape') {
@@ -44,6 +45,13 @@ function Header() {
       document.body.removeEventListener('keydown', handleEscapeKeyDown);
   }, [handleEscapeKeyDown, isModalShow]);
 
+  useEffect(() => {
+    if (searchInputValue === '') {
+      dispatch(loadSearchResult([]));
+    }
+    dispatch(fetchSearchMovieAction(searchInputValue));
+  }, [dispatch, searchInputValue]);
+
   return (
     <S.Header>
       <S.Content>
@@ -72,10 +80,10 @@ function Header() {
             onChange={handleSearchInputChange}
           />
 
-          <ModalSearchResult movies={movies} isModalShow={isModalShow} />
+          <ModalSearchResult movies={searchResalt} isModalShow={isModalShow} />
         </S.SearchConteiner>
       </S.Content>
-      <S.ModalOverlay isModalShow={isModalShow && movies.length !== 0} onClick={handleModalClose} />
+      <S.ModalOverlay isModalShow={isModalShow} onClick={handleModalClose} />
     </S.Header>
   );
 }

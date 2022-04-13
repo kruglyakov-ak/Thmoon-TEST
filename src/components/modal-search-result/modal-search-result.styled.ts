@@ -26,6 +26,10 @@ const ModalSearchResultItem = styled.div`
   display: flex;
   padding: 10px 0;
 
+  & p {
+    padding-left: 10px;
+  }
+
   &:hover {
     background-color: ${({ theme }) => theme.color.lightGrey};
   }

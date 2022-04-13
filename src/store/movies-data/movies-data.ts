@@ -9,7 +9,8 @@ import {
   loadMovieDetails,
   setIsMovieDetailsLoaded,
   setIsMoviesLoaded,
-  setIsNowPlayingMoviesLoaded
+  setIsNowPlayingMoviesLoaded,
+  loadSearchResult
 } from '../action';
 
 const initialState: MoviesData = {
@@ -21,6 +22,7 @@ const initialState: MoviesData = {
   isMovieDetailsLoaded: false,
   isMoviesLoaded: false,
   isNowPlayingMoviesLoaded: false,
+  searchResult: []
 };
 
 const moviesData = createReducer(initialState, (builder) => {
@@ -52,6 +54,10 @@ const moviesData = createReducer(initialState, (builder) => {
     .addCase(setIsNowPlayingMoviesLoaded, (state, action) => {
       const { isNowPlayingMoviesLoaded } = action.payload;
       state.isNowPlayingMoviesLoaded = isNowPlayingMoviesLoaded;
+    })
+    .addCase(loadSearchResult, (state, action) => {
+      const { searchResult } = action.payload;
+      state.searchResult = searchResult;
     })
     .addCase(setMoviesFilter, (state, action) => {
       const { moviesFilter } = action.payload;

@@ -13,6 +13,7 @@ const getMoviesFilter = (state: State): NavItems => state[NameSpace.Data].movies
 const getIsMoviesLoaded = (state: State): boolean => state[NameSpace.Data].isMoviesLoaded;
 const getIsNowPlayingMoviesLoaded = (state: State): boolean => state[NameSpace.Data].isNowPlayingMoviesLoaded;
 const getIsMovieDetailsLoaded = (state: State): boolean => state[NameSpace.Data].isMovieDetailsLoaded;
+const getSearchResalt= (state: State): Movie[] => state[NameSpace.Data].searchResult;
 
 export {
   getMovies,
@@ -23,4 +24,5 @@ export {
   getIsMovieDetailsLoaded,
   getIsMoviesLoaded,
   getIsNowPlayingMoviesLoaded,
+  getSearchResalt
 };

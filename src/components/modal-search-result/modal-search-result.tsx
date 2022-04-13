@@ -10,9 +10,17 @@ type ModalSearchResultProps = {
 }
 
 function ModalSearchResult({ movies, isModalShow }: ModalSearchResultProps) {
-
+  if (movies.length === 0) {
+    return (
+      <S.ModalSearchResult isModalShow={isModalShow}>
+        <S.ModalSearchResultItem>
+          <p>Ничего не найдено</p>
+        </S.ModalSearchResultItem>
+      </S.ModalSearchResult>
+    );
+  }
   return (
-    <S.ModalSearchResult isModalShow={isModalShow && movies.length !== 0}>
+    <S.ModalSearchResult isModalShow={isModalShow}>
       {movies.map((item) => {
         const releaseDate = Date.parse(item.release_date);
 

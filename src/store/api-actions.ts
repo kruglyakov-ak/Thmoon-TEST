@@ -10,6 +10,7 @@ import {
   setIsMovieDetailsLoaded,
   setIsNowPlayingMoviesLoaded,
   setIsMoviesLoaded,
+  loadSearchResult,
 } from './action';
 
 const fetchMoviesAction = (moviesFilter: NavItems, currentPage: number): ThunkActionResult =>
@@ -56,9 +57,16 @@ const fetchMovieDetailsAction = (id: number): ThunkActionResult =>
     }
   };
 
+const fetchSearchMovieAction = (query: string): ThunkActionResult =>
+  async (dispatch, _getState, api): Promise<void> => {
+    const { data } = await api.get(`search/movie?api_key=${API_KEY}&language=ru&query=${query}&page=1&include_adult=false`);
+    dispatch(loadSearchResult(data.results));
+  };
+
 export {
   fetchMoviesAction,
   fetchGenresAction,
   fetchNowPlayingMoviesAction,
   fetchMovieDetailsAction,
+  fetchSearchMovieAction
 };

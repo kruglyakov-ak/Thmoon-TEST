@@ -15,6 +15,7 @@ type MoviesData = {
   isMovieDetailsLoaded: boolean;
   isMoviesLoaded: boolean,
   isNowPlayingMoviesLoaded: boolean,
+  searchResult: Movie[],
 };
 
 type Pagination = {
