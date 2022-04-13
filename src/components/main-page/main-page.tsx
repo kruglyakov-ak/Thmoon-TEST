@@ -41,7 +41,7 @@ function MainPage() {
   }
 
   if (movies.length === 0) {
-    <EmptyPage />;
+    return (<EmptyPage />);
   }
 
   return (

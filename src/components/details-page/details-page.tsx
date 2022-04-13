@@ -32,7 +32,7 @@ function DetailsPage() {
   }
 
   if (details === null) {
-    <EmptyPage />;
+    return (<EmptyPage />);
   }
 
   return (

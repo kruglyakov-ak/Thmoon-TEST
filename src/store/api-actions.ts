@@ -46,6 +46,7 @@ const fetchNowPlayingMoviesAction = (): ThunkActionResult =>
 const fetchMovieDetailsAction = (id: number): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
     dispatch(setIsMovieDetailsLoaded(false));
+    dispatch(loadMovieDetails(null));
     try {
       const { data } = await api.get(`/movie/${id}?api_key=${API_KEY}&language=ru`);
       dispatch(loadMovieDetails(data));
