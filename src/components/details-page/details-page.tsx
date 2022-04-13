@@ -4,20 +4,35 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { AppRoutes, Countries } from '../../const';
 import { fetchMovieDetailsAction } from '../../store/api-actions';
-import { getMovieDetails } from '../../store/movies-data/selectors';
+import { getIsMovieDetailsLoaded, getMovieDetails } from '../../store/movies-data/selectors';
 import Header from '../header/header';
+import LoadingScreen from '../loading-screen/loading-screen';
 import * as S from './details-page.styled';
 
 function DetailsPage() {
   const dispatch = useDispatch();
   const id = useLocation().pathname;
   const details = useSelector(getMovieDetails);
+  const isLoaded = useSelector(getIsMovieDetailsLoaded);
 
   useEffect(() => {
     dispatch(fetchMovieDetailsAction(+id.substring(AppRoutes.Movie.length, id.length)));
   }, [dispatch, id]);
 
+  if (!isLoaded) {
+    return (
+      <>
+        <Header />
+        <S.DetailsPage>
+          <LoadingScreen />
+        </S.DetailsPage>
+      </>
+    );
+  }
+
   return (
+
+
     <>
       <Header />
       {details !== null &&
@@ -54,11 +69,11 @@ function DetailsPage() {
               </tr>
               <tr>
                 <S.TH>Бюджет фильма</S.TH>
-                <td>{`$ ${details.budget}`}</td>
+                <td>{details.budget !== 0 ? `$ ${details.budget}` : '-'}</td>
               </tr>
               <tr>
                 <S.TH>Сборы в мире</S.TH>
-                <td>{`$ ${details.revenue}`}</td>
+                <td>{details.budget !== 0 ? `$ ${details.revenue}` : '-'}</td>
               </tr>
               <tr>
                 <S.TH>Премьера в мире</S.TH>

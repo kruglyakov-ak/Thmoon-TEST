@@ -9,6 +9,9 @@ enum ActionType {
   LoadGenres = 'data/loadGenres',
   LoadNowPlayingMovies = 'data/loadNowPlayingMovies',
   LoadMovieDetails = 'data/loadMovieDetails',
+  SetIsMovieDetailsLoaded = 'data/setIsMovieDetailsLoaded',
+  SetIsNowPlayingMoviesLoaded = 'data/setIsNowPlayingMoviesLoaded',
+  SetIsMoviesLoaded = 'data/setIsMoviesLoaded',
   LoadPageCount = 'pagination/loadPageCount',
   SetCurrentPage = 'pagination/setCurrentPage',
 }

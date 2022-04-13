@@ -62,6 +62,31 @@ const loadMovieDetails = createAction(
   })
 );
 
+const setIsMovieDetailsLoaded = createAction(
+  ActionType.SetIsMovieDetailsLoaded,
+  (isMovieDetailsLoaded: boolean) => ({
+    payload: {
+      isMovieDetailsLoaded,
+    },
+  })
+);
+const setIsMoviesLoaded = createAction(
+  ActionType.SetIsMoviesLoaded,
+  (isMoviesLoaded: boolean) => ({
+    payload: {
+      isMoviesLoaded,
+    },
+  })
+);
+const setIsNowPlayingMoviesLoaded = createAction(
+  ActionType.SetIsNowPlayingMoviesLoaded,
+  (isNowPlayingMoviesLoaded: boolean) => ({
+    payload: {
+      isNowPlayingMoviesLoaded,
+    },
+  })
+);
+
 export {
   setMoviesFilter,
   loadMovies,
@@ -70,4 +95,7 @@ export {
   loadGenres,
   loadNowPlayingMovies,
   loadMovieDetails,
+  setIsMovieDetailsLoaded,
+  setIsMoviesLoaded,
+  setIsNowPlayingMoviesLoaded,
 };

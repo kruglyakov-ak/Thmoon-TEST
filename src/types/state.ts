@@ -12,6 +12,9 @@ type MoviesData = {
   genres: Genre[],
   moviesFilter: NavItems;
   movieDetails: null | MovieDetails;
+  isMovieDetailsLoaded: boolean;
+  isMoviesLoaded: boolean,
+  isNowPlayingMoviesLoaded: boolean,
 };
 
 type Pagination = {

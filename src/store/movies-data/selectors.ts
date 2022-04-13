@@ -10,5 +10,17 @@ const getNowPlayingMovies = (state: State): Movie[] => state[NameSpace.Data].now
 const getMovieDetails = (state: State): MovieDetails | null => state[NameSpace.Data].movieDetails;
 const getGenres = (state: State): Genre[] => state[NameSpace.Data].genres;
 const getMoviesFilter = (state: State): NavItems => state[NameSpace.Data].moviesFilter;
+const getIsMoviesLoaded = (state: State): boolean => state[NameSpace.Data].isMoviesLoaded;
+const getIsNowPlayingMoviesLoaded = (state: State): boolean => state[NameSpace.Data].isNowPlayingMoviesLoaded;
+const getIsMovieDetailsLoaded = (state: State): boolean => state[NameSpace.Data].isMovieDetailsLoaded;
 
-export { getMovies, getMoviesFilter, getGenres, getNowPlayingMovies, getMovieDetails };
+export {
+  getMovies,
+  getMoviesFilter,
+  getGenres,
+  getNowPlayingMovies,
+  getMovieDetails,
+  getIsMovieDetailsLoaded,
+  getIsMoviesLoaded,
+  getIsNowPlayingMoviesLoaded,
+};
