@@ -3,16 +3,41 @@ import { Link } from 'react-router-dom';
 import { AppRoutes, NavItems } from '../../const';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage, setMoviesFilter } from '../../store/action';
-import { getMoviesFilter } from '../../store/movies-data/selectors';
+import { getMovies, getMoviesFilter } from '../../store/movies-data/selectors';
+import { useCallback, useEffect, useState } from 'react';
+import ModalSearchResult from '../modal-search-result/modal-search-result';
 
 function Header() {
   const dispatch = useDispatch();
+  const [isModalShow, setIsModalShow] = useState(false);
   const activeNavItem = useSelector(getMoviesFilter);
+  const movies = useSelector(getMovies);
+
+  const handleEscapeKeyDown = useCallback((evt: { key: string; }) => {
+    if (evt.key === 'Escape') {
+      setIsModalShow(false);
+      document.body.removeEventListener('keydown', handleEscapeKeyDown);
+    }
+  }, []);
 
   const handleNavItemClick = ({ currentTarget }: React.MouseEvent<HTMLLIElement>) => {
     dispatch(setMoviesFilter(currentTarget.textContent as NavItems));
     dispatch(setCurrentPage(1));
   };
+
+  const handleSearchInputFocus = () => {
+    setIsModalShow(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalShow(false);
+  };
+
+  useEffect(() => {
+    isModalShow ?
+      document.body.addEventListener('keydown', handleEscapeKeyDown) :
+      document.body.removeEventListener('keydown', handleEscapeKeyDown);
+  }, [handleEscapeKeyDown, isModalShow]);
 
   return (
     <S.Header>
@@ -38,9 +63,15 @@ function Header() {
               </Link>
             </S.NavigationItem>
           </S.NavigationList>
-        </S.Navigation >
-      </S.Content >
-    </S.Header >
+        </S.Navigation>
+        <S.SearchConteiner>
+          <S.SearchInput type="text" placeholder='Поиск' onFocus={handleSearchInputFocus} />
+
+          <ModalSearchResult movies={movies} isModalShow={isModalShow} />
+        </S.SearchConteiner>
+      </S.Content>
+      <S.ModalOverlay isModalShow={isModalShow && movies.length !== 0} onClick={handleModalClose} />
+    </S.Header>
   );
 }
 

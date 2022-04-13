@@ -32,7 +32,9 @@ const Navigation = styled.nav`
 const NavigationList = styled.ul`
   display: flex;
   justify-content: space-between;
-  align-items: center;`;
+  align-items: center;
+  padding-right: 100px;
+`;
 
 type NavigationItemProps = {
   active?: boolean;
@@ -55,4 +57,86 @@ const NavigationItem = styled.li<NavigationItemProps>`
     color: ${({ theme }) => theme.color.white};
   }
 `;
-export { Header, Content, Logo, Navigation, NavigationList, NavigationItem };
+
+const SearchConteiner = styled.div`
+  position: relative;
+`;
+
+const SearchInput = styled.input`
+  padding: 5px;
+  width: 340px;
+`;
+
+type ModalSearchResultProps = {
+  isModalShow: boolean;
+};
+
+const SearchModal = css`
+  position: absolute;
+  width: 340px;
+  top: 33px;
+  left: 0;
+  background-color: ${({ theme }) => theme.color.white};
+  box-shadow: 0 10px 20px -2px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+`;
+
+const ModalSearchResult = styled.div<ModalSearchResultProps>`
+  ${({ isModalShow }) => (isModalShow ? SearchModal : 'display: none;')}
+`;
+
+const ModalSearchResultItem = styled.div`
+  display: flex;
+  padding: 10px 0;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.lightGrey};
+  }
+`;
+
+const ModalSearchResultItemDesc = styled.div`
+  padding-left: 10px;
+`;
+
+const ModalSearchResultItemPoster = styled.img`
+  width: 32px;
+  height: 48px;
+  margin-left: 10px;
+`;
+
+const ModalSearchResultItemTitle = styled.h3`
+  color: ${({ theme }) => theme.color.grey};
+`;
+
+const ModalSearchResultItemVote = styled.span`
+  color: ${({ theme }) => theme.color.green};
+  font-weight: bold;
+`;
+
+const ModalOverlay = styled.div<ModalSearchResultProps>`
+  ${({ isModalShow }) => (isModalShow ? '' : 'display: none;')}
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300vw;
+  height: 300vh;
+  background-color: transparent;
+`;
+
+export {
+  Header,
+  Content,
+  Logo,
+  Navigation,
+  NavigationList,
+  NavigationItem,
+  SearchInput,
+  ModalSearchResult,
+  SearchConteiner,
+  ModalSearchResultItem,
+  ModalSearchResultItemPoster,
+  ModalSearchResultItemDesc,
+  ModalSearchResultItemTitle,
+  ModalSearchResultItemVote,
+  ModalOverlay
+};
